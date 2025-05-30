@@ -1,75 +1,79 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-export default function HomeScreen() {
+export default function ExploreScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
           source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          style={styles.headerImage}
         />
       }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome! It is I, Cami Chou</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+      <ThemedView style={styles.container}>
+        <ThemedText type="title">Explore Travel Logs</ThemedText>
+        
+        <ThemedView style={styles.feedContainer}>
+          {/* Sample travel log entries */}
+          <ThemedView style={styles.logEntry}>
+            <Image
+              source={require('@/assets/images/partial-react-logo.png')}
+              style={styles.locationImage}
+            />
+            <ThemedView style={styles.logContent}>
+              <ThemedText type="subtitle">Paris, France</ThemedText>
+              <ThemedText type="defaultSemiBold">@traveler123</ThemedText>
+              <ThemedText>Beautiful evening at the Eiffel Tower...</ThemedText>
+            </ThemedView>
+          </ThemedView>
+
+          <ThemedView style={styles.logEntry}>
+            <Image
+              source={require('@/assets/images/partial-react-logo.png')}
+              style={styles.locationImage}
+            />
+            <ThemedView style={styles.logContent}>
+              <ThemedText type="subtitle">Kyoto, Japan</ThemedText>
+              <ThemedText type="defaultSemiBold">@wanderlust</ThemedText>
+              <ThemedText>Exploring ancient temples in the rain...</ThemedText>
+            </ThemedView>
+          </ThemedView>
+        </ThemedView>
       </ThemedView>
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    gap: 24,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
+  headerImage: {
     height: 178,
     width: 290,
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  feedContainer: {
+    gap: 16,
+  },
+  logEntry: {
+    backgroundColor: 'rgba(161, 206, 220, 0.1)',
+    borderRadius: 12,
+    overflow: 'hidden',
+  },
+  locationImage: {
+    width: '100%',
+    height: 200,
+  },
+  logContent: {
+    padding: 16,
+    gap: 8,
   },
 });

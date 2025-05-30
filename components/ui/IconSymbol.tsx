@@ -17,6 +17,7 @@ const MAPPING = {
   'mappin': 'place',
   'bookmark': 'bookmark',
   'person': 'person',
+  'envelope.fill': 'mail',
   'house.fill': 'home',
   'paperplane.fill': 'send',
   'chevron.left.forwardslash.chevron.right': 'code',
